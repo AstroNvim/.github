@@ -1,5 +1,5 @@
 <div align="center" id="madewithlua">
-    <img src="https://astronvim.github.io/img/logo/astronvim.svg" width="110", height="100">
+    <img src="https://astronvim.com/img/logo/astronvim.svg" width="110", height="100">
 </div>
 
 <h1 align="center">AstroNvim</h1>
