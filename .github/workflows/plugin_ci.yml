@@ -103,8 +103,6 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ inputs.is_production }}
     needs:
-      - docs
-      - vimdoc
       - style
       - lint
     steps:
