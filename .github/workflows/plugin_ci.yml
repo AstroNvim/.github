@@ -5,7 +5,7 @@ on:
     secrets:
       RELEASE_TOKEN:
         description: "GitHub PAT for creating the release PRs so that they trigger GitHub Actions"
-        required: true
+        required: false
       NETLIFY_TOKEN:
         description: "Netlify API token for deploying documentation"
         required: false
