@@ -8,10 +8,10 @@ on:
         required: true
       NETLIFY_TOKEN:
         description: "Netlify API token for deploying documentation"
-        required: true
+        required: false
       NETLIFY_SITE_ID:
         description: "Netlify site ID for deploying documentation"
-        required: true
+        required: false
     inputs:
       plugin_name:
         description: "Name of the neovim plugin"

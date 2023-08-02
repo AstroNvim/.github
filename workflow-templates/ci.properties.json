@@ -1,0 +1,6 @@
+{
+  "name": "AstroNvim Neovim Plugin CI/CD",
+  "description": "Add format checking, linting, documentation, and automated release",
+  "iconName": "octicon workflow",
+  "categories": ["Lua"]
+}
