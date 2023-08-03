@@ -6,12 +6,6 @@ on:
       RELEASE_TOKEN:
         description: "GitHub PAT for creating the release PRs so that they trigger GitHub Actions"
         required: false
-      NETLIFY_TOKEN:
-        description: "Netlify API token for deploying documentation"
-        required: false
-      NETLIFY_SITE_ID:
-        description: "Netlify site ID for deploying documentation"
-        required: false
     inputs:
       plugin_name:
         description: "Name of the neovim plugin"
@@ -68,36 +62,6 @@ jobs:
           commit_user_name: "github-actions[bot]"
           commit_user_email: "github-actions[bot]@users.noreply.github.com"
           commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
-  docs:
-    name: Generate Lua API
-    runs-on: ubuntu-latest
-    if: ${{ inputs.docs }}
-    needs:
-      - style
-      - lint
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Lua
-        uses: leafo/gh-actions-lua@v10
-        with:
-          luaVersion: 5.4
-      - name: Install LDoc
-        uses: leafo/gh-actions-luarocks@v4
-      - name: Setup dependencies
-        run: luarocks install ldoc
-      - name: Build Docs
-        run: |
-          ldoc .
-      - name: Deploy
-        uses: nwtgck/actions-netlify@v2.0
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          publish-dir: docs
-          production-deploy: ${{ inputs.is_production }}
   release:
     name: Release Please
     runs-on: ubuntu-latest
