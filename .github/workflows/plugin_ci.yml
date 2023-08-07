@@ -45,7 +45,7 @@ jobs:
     needs:
       - style
       - lint
-    if: ${{ inputs.is_production && inputs.docs }}
+    if: ${{ inputs.docs }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -84,6 +84,7 @@ jobs:
           demojify: true
           treesitter: true
       - name: Push changes
+        if: ${{ inputs.is_production }}
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           file_pattern: "doc/*"
