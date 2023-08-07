@@ -48,6 +48,8 @@ jobs:
     if: ${{ inputs.is_production && inputs.docs }}
     steps:
       - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.RELEASE_TOKEN }}
       - name: Install Lua Language Server
         uses: jdxcode/rtx-action@v1
         with:
@@ -86,9 +88,9 @@ jobs:
         with:
           file_pattern: "doc/*"
           commit_message: "chore(build): auto-generate vimdoc"
-          commit_user_name: "github-actions[bot]"
-          commit_user_email: "github-actions[bot]@users.noreply.github.com"
-          commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
+          commit_user_name: "astronvimbot"
+          commit_user_email: "github@astronvim.com"
+          commit_author: "AstroNvim Bot <github@astronvim.com>"
   release:
     name: Release Please
     runs-on: ubuntu-latest
