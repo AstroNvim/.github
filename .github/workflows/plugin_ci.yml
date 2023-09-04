@@ -47,21 +47,21 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ inputs.spellcheck && !inputs.is_production }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: crate-ci/typos@master
   commit_msg:
     name: Conventional Commit Messages
     runs-on: ubuntu-latest
     if: ${{ inputs.commit_msg && !inputs.is_production }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: webiny/action-conventional-commits@v1.1.0
   pr_title:
     name: Conventional Commit PR Title
     runs-on: ubuntu-latest
     if: ${{ inputs.pr_title && !inputs.is_production }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: amannn/action-semantic-pull-request@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -88,7 +88,7 @@ jobs:
     name: Stylua Formatting
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: JohnnyMorganz/stylua-action@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -98,7 +98,7 @@ jobs:
     name: Luacheck Linting
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: lunarmodules/luacheck@v1
   vimdoc:
     name: Generate Vimdoc
@@ -108,7 +108,7 @@ jobs:
       - lint
     if: ${{ inputs.docs }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           token: ${{ secrets.RELEASE_TOKEN }}
       - name: Install Lua Language Server
@@ -167,7 +167,7 @@ jobs:
           token: ${{ secrets.RELEASE_TOKEN }}
           release-type: simple
           package-name: ${{ inputs.plugin_name }}
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: rickstaa/action-create-tag@v1
         if: ${{ steps.release.outputs.release_created }}
         with:
