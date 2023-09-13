@@ -68,7 +68,7 @@ If you wish to contribute to an AstroNvim repository, you should:
 
 - PRs should follow the pull request formats where applicable
 
-- We are open to all PRs, but if a PR is denied for any reason please don't be discouraged! We'll still be open to discussions. If you have any questions before opening the PR feel free to join the [discord server](https://discord.gg/UcZutyeaFW).
+- We are open to all PRs, but if a PR is denied for any reason please don't be discouraged! We'll still be open to discussions. If you have any questions before opening the PR feel free to join the [discord server](https://discord.astronvim.com).
 
 - AstroNvim projects aim to provide the best user experience when it comes to being able to support confident updating for users, for this reason please avoid opening PRs with breaking changes. Avoiding breaking changes is not always going to be possible, so if you think it is completely necessary we are open to discussion.
 
@@ -188,4 +188,4 @@ $ git push origin --force-with-lease
 
 ## Help
 
-For help with contributing and anything else AstroNvim related join the [discord](https://discord.gg/UcZutyeaFW)
+For help with contributing and anything else AstroNvim related join the [discord](https://discord.astronvim.com)
