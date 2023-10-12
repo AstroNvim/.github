@@ -1,0 +1,43 @@
+name: Validate Pull Request
+
+on:
+  workflow_call:
+    inputs:
+      conventional_title:
+        description: "Whether or not to validate conventional commit pull request titles"
+        default: false
+        required: false
+        type: boolean
+      scopes:
+        description: "Valid scopes for checking PR titles"
+        required: false
+        type: string
+
+jobs:
+  conventional_commit:
+    name: Conventional Commit Title
+    if: ${{ inputs.conventional_title }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          scopes: ${{ inputs.scopes }}
+          requireScope: true
+          types: |
+            build
+            chore
+            ci
+            docs
+            feat
+            fix
+            merge
+            perf
+            refactor
+            revert
+            style
+            test
+            wip
+          ignoreLabels: |
+            autorelease: pending
