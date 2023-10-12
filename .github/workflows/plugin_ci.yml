@@ -31,15 +31,6 @@ on:
         default: true
         required: false
         type: boolean
-      pr_title:
-        description: "Whether or not to validate conventional commit pull request titles"
-        default: false
-        required: false
-        type: boolean
-      scopes:
-        description: "Valid scopes for checking PR titles"
-        required: false
-        type: string
 
 jobs:
   typos:
@@ -56,34 +47,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: webiny/action-conventional-commits@v1.1.0
-  pr_title:
-    name: Conventional Commit PR Title
-    runs-on: ubuntu-latest
-    if: ${{ inputs.pr_title && !inputs.is_production }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: amannn/action-semantic-pull-request@v5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          scopes: ${{ inputs.scopes }}
-          requireScope: true
-          types: |
-            build
-            chore
-            ci
-            docs
-            feat
-            fix
-            merge
-            perf
-            refactor
-            revert
-            style
-            test
-            wip
-          ignoreLabels: |
-            autorelease: pending
   style:
     name: Stylua Formatting
     runs-on: ubuntu-latest
