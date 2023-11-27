@@ -46,7 +46,7 @@ jobs:
     if: ${{ inputs.commit_msg && !inputs.is_production }}
     steps:
       - uses: actions/checkout@v4
-      - uses: webiny/action-conventional-commits@v1.1.0
+      - uses: webiny/action-conventional-commits@v1.2.0
   style:
     name: Stylua Formatting
     runs-on: ubuntu-latest
