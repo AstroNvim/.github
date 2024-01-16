@@ -75,7 +75,7 @@ jobs:
         with:
           token: ${{ secrets.RELEASE_TOKEN != null && secrets.RELEASE_TOKEN || secrets.GITHUB_TOKEN }}
       - name: Install Lua Language Server
-        uses: jdxcode/rtx-action@v1
+        uses: jdx/mise-action@v2
         with:
           tool_versions: |
             lua-language-server latest
