@@ -56,7 +56,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           version: latest
-          args: --check .
+          args: --check lua
   lint:
     name: Selene Linting
     runs-on: ubuntu-latest
