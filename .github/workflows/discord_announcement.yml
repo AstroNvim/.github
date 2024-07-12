@@ -20,7 +20,6 @@ jobs:
           color: "5285097"
           username: "AstroNvim Releases"
           avatar_url: "https://avatars.githubusercontent.com/u/141652974?v=4"
-          content: "||@everyone||"
           footer_title: "Changelog"
           footer_icon_url: "https://avatars.githubusercontent.com/u/141652974?v=4"
           footer_timestamp: true
