@@ -25,5 +25,10 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
           DISCORD_USERNAME: "AstroNvim Releases"
           DISCORD_AVATAR: "https://avatars.githubusercontent.com/u/141652974?v=4"
+          DISCORD_EMBEDS: '[{
+            "title": "${{github.event.repository.name}}",
+            "color": 5285097,
+            "footer": {"text": "Changelog"}
+            }]'
         with:
           args: "${{ steps.changelog.outputs.DISCORD_MESSAGE }}"
