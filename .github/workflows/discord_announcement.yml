@@ -13,13 +13,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Github Releases To Discord
-        uses: SethCohen/github-releases-to-discord@v1.15.0
+      - name: Fetch changelog
+        id: changelog
+        run: |
+          echo 'DISCORD_MESSAGE<<EOF' >> $GITHUB_OUTPUT
+          awk '/^## \[/{if (p) exit; p=1} p' CHANGELOG.md >> $GITHUB_OUTPUT
+          echo 'EOF' >> $GITHUB_OUTPUT
+      - name: Send changlog to Discord
+        uses: Ilshidur/action-discord@0.3.2
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          DISCORD_USERNAME: "AstroNvim Releases"
+          DISCORD_AVATAR: "https://avatars.githubusercontent.com/u/141652974?v=4"
         with:
-          webhook_url: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          color: "5285097"
-          username: "AstroNvim Releases"
-          avatar_url: "https://avatars.githubusercontent.com/u/141652974?v=4"
-          footer_title: "Changelog"
-          footer_icon_url: "https://avatars.githubusercontent.com/u/141652974?v=4"
-          footer_timestamp: true
+          args: "${{ steps.changelog.outputs.DISCORD_MESSAGE }}"
