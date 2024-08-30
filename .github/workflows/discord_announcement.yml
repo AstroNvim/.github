@@ -23,13 +23,14 @@ jobs:
         id: changelog
         run: |
           echo 'DISCORD_MESSAGE<<EOF' >> $GITHUB_OUTPUT
+          echo '# ${{ inputs.plugin_name }} Release' >> $GITHUB_OUTPUT
           awk '/^## \[/{if (p) exit; p=1} p' CHANGELOG.md >> $GITHUB_OUTPUT
           echo 'EOF' >> $GITHUB_OUTPUT
       - name: Send changlog to Discord
         uses: Ilshidur/action-discord@0.3.2
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          DISCORD_USERNAME: "${{ inputs.plugin_name }} Release"
+          DISCORD_USERNAME: "AstroNvim Releases"
           DISCORD_AVATAR: "https://avatars.githubusercontent.com/u/141652974?v=4"
           DISCORD_EMBEDS: '[{
             "title": "${{ inputs.plugin_name }} Release on GitHub",
