@@ -6,6 +6,11 @@ on:
       DISCORD_WEBHOOK_URL:
         description: "The webhook URL to push to"
         required: true
+    inputs:
+      plugin_name:
+        description: "Name of the neovim plugin"
+        required: true
+        type: string
 
 jobs:
   github-releases-to-discord:
@@ -23,12 +28,8 @@ jobs:
         uses: Ilshidur/action-discord@0.3.2
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          DISCORD_USERNAME: "AstroNvim Releases"
+          DISCORD_USERNAME: "${{ inputs.plugin_name }} Release"
           DISCORD_AVATAR: "https://avatars.githubusercontent.com/u/141652974?v=4"
-          DISCORD_EMBEDS: '[{
-            "title": "${{github.event.repository.name}}",
-            "color": 5285097,
-            "footer": {"text": "Changelog"}
-            }]'
+          DISCORD_EMBEDS: "[]"
         with:
           args: "${{ steps.changelog.outputs.DISCORD_MESSAGE }}"
