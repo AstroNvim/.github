@@ -25,14 +25,14 @@ jobs:
           max_chars=2000
           header=$(echo '# ${{ inputs.plugin_name }} Release')
           changelog=$(awk '/^## \[/{if (p) exit; p=1} p' CHANGELOG.md)
-          message="${header}"$'\n'"${changelog}"
-          message=$(echo "${message}" | fold -s -w "${max_chars}" | head -c "${max_chars}")
-          if [[ ${#message} -gt $max_chars ]]; then
+          full_message="${header}"$'\n'"${changelog}"
+          message=$(echo "${full_message}" | fold -s -w "${max_chars}" | head -c "${max_chars}")
+          if [[ ${#full_message} -gt $max_chars ]]; then
             message=$(echo "${message}" | head -n -1)
             message="${message}"$'\n'"..."
           fi
           echo 'DISCORD_MESSAGE<<EOF' >> $GITHUB_OUTPUT
-          echo -e message >> $GITHUB_OUTPUT
+          echo -e "${message}" >> $GITHUB_OUTPUT
           echo 'EOF' >> $GITHUB_OUTPUT
       - name: Send changlog to Discord
         uses: Ilshidur/action-discord@0.3.2
