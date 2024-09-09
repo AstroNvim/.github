@@ -22,9 +22,17 @@ jobs:
       - name: Fetch changelog
         id: changelog
         run: |
+          max_chars=2000
+          header=$(echo '# ${{ inputs.plugin_name }} Release')
+          changelog=$(awk '/^## \[/{if (p) exit; p=1} p' CHANGELOG.md)
+          message="${header}"$'\n'"${changelog}"
+          message=$(echo "${message}" | fold -s -w "${max_chars}" | head -c "${max_chars}")
+          if [[ ${#message} -gt $max_chars ]]; then
+            message=$(echo "${message}" | head -n -1)
+            message="${message}"$'\n'"..."
+          fi
           echo 'DISCORD_MESSAGE<<EOF' >> $GITHUB_OUTPUT
-          echo '# ${{ inputs.plugin_name }} Release' >> $GITHUB_OUTPUT
-          awk '/^## \[/{if (p) exit; p=1} p' CHANGELOG.md >> $GITHUB_OUTPUT
+          echo -e message >> $GITHUB_OUTPUT
           echo 'EOF' >> $GITHUB_OUTPUT
       - name: Send changlog to Discord
         uses: Ilshidur/action-discord@0.3.2
