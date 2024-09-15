@@ -90,7 +90,7 @@ jobs:
           if [ ! -e "doc/${PLUGIN_NAME}.txt" ]; then
             touch "doc/${PLUGIN_NAME}.txt"
           fi
-          lua-language-server --doc . --logpath api
+          lua-language-server --doc . --doc_out_path api --logpath api
           sed -i -n "/^# ${PLUGIN_NAME}\(\..*\)\{0,1\}$/,/^-\+$/p" api/doc.md
           if [ -s "api/doc.md" ]; then
             sed -i '/^-\+$/d ; s/^#/##/g ; s/^@//g' api/doc.md
