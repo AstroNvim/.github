@@ -140,3 +140,17 @@ jobs:
           message: "Current stable release: ${{ steps.release.outputs.tag_name }}"
           tag_exists_error: false
           force_push_tag: true
+      - uses: rickstaa/action-create-tag@v1
+        if: ${{ steps.release.outputs.release_created }}
+        with:
+          tag: "v${{ steps.release.outputs.major }}"
+          message: "Current v${{ steps.release.outputs.major }} release: ${{ steps.release.outputs.tag_name }}"
+          tag_exists_error: false
+          force_push_tag: true
+      - uses: rickstaa/action-create-tag@v1
+        if: ${{ steps.release.outputs.release_created }}
+        with:
+          tag: "v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }}"
+          message: "Current v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }} release: ${{ steps.release.outputs.tag_name }}"
+          tag_exists_error: false
+          force_push_tag: true
