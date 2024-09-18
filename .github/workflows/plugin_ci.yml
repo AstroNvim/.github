@@ -50,6 +50,7 @@ jobs:
   style:
     name: Stylua Formatting
     runs-on: ubuntu-latest
+    if: ${{ inputs.plugin_name != '' }}
     steps:
       - uses: actions/checkout@v4
       - uses: JohnnyMorganz/stylua-action@v4
@@ -60,6 +61,7 @@ jobs:
   lint:
     name: Selene Linting
     runs-on: ubuntu-latest
+    if: ${{ inputs.plugin_name != '' }}
     steps:
       - uses: actions/checkout@v4
       - uses: NTBBloodbath/selene-action@v1.0.0
@@ -72,7 +74,7 @@ jobs:
     needs:
       - style
       - lint
-    if: ${{ inputs.docs }}
+    if: ${{ inputs.plugin_name != '' && inputs.docs }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -123,9 +125,6 @@ jobs:
     name: Release Please
     runs-on: ubuntu-latest
     if: ${{ inputs.is_production }}
-    needs:
-      - style
-      - lint
     steps:
       - uses: googleapis/release-please-action@v4
         id: release
