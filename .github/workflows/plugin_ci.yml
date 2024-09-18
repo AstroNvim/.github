@@ -132,7 +132,6 @@ jobs:
         with:
           token: ${{ secrets.RELEASE_TOKEN }}
           release-type: simple
-          package-name: ${{ inputs.plugin_name }}
       - uses: actions/checkout@v4
       - uses: rickstaa/action-create-tag@v1
         if: ${{ steps.release.outputs.release_created }}
