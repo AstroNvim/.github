@@ -82,6 +82,7 @@ jobs:
       - name: Install Lua Language Server
         uses: jdx/mise-action@v2
         with:
+          version: 2025.3.7
           tool_versions: |
             lua-language-server latest
       - name: Build API docs and prepare Panvimdoc
@@ -96,13 +97,13 @@ jobs:
           sed -i -n "/^# ${PLUGIN_NAME}\(\..*\)\{0,1\}$/,/^-\+$/p" api/doc.md
           if [ -s "api/doc.md" ]; then
             sed -i '/^-\+$/d ; s/^#/##/g ; s/^@//g' api/doc.md
-            echo "# Lua API" > doc/api.md
-            echo "" >> doc/api.md
-            echo "${PLUGIN_NAME} API documentation" >> doc/api.md
-            echo "" >> doc/api.md
-            cat api/doc.md >> doc/api.md
-            echo "" >> README.md
-            cat doc/api.md >> README.md
+            echo "# Lua API" >doc/api.md
+            echo "" >>doc/api.md
+            echo "${PLUGIN_NAME} API documentation" >>doc/api.md
+            echo "" >>doc/api.md
+            cat api/doc.md >>doc/api.md
+            echo "" >>README.md
+            cat doc/api.md >>README.md
           fi
           rm -rf api
       - name: panvimdoc
