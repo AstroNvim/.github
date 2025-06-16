@@ -115,7 +115,7 @@ jobs:
           treesitter: true
       - name: Push changes
         if: ${{ inputs.is_production }}
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v6
         with:
           file_pattern: "doc/*"
           commit_message: "chore(build): auto-generate vimdoc"
