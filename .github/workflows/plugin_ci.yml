@@ -80,7 +80,7 @@ jobs:
         with:
           token: ${{ secrets.RELEASE_TOKEN != null && secrets.RELEASE_TOKEN || secrets.GITHUB_TOKEN }}
       - name: Install Lua Language Server
-        uses: jdx/mise-action@v2
+        uses: jdx/mise-action@v3
         with:
           version: 2025.3.7
           tool_versions: |
