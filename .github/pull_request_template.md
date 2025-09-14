@@ -17,6 +17,6 @@ Closes #<Issue # here>
 - [x] Completed
 -->
 
-## ℹ Additional Information
+## 📖 Additional Information
 
 <!-- Any additional information like breaking changes, dependencies added, screenshots, comparisons between new and old behavior, etc. -->
