@@ -38,21 +38,21 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ inputs.spellcheck && !inputs.is_production }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: crate-ci/typos@master
   commit_msg:
     name: Conventional Commit Messages
     runs-on: ubuntu-latest
     if: ${{ inputs.commit_msg && !inputs.is_production }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: webiny/action-conventional-commits@v1.3.0
   style:
     name: Stylua Formatting
     runs-on: ubuntu-latest
     if: ${{ inputs.plugin_name != '' }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: JohnnyMorganz/stylua-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -63,7 +63,7 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ inputs.plugin_name != '' }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: NTBBloodbath/selene-action@v1.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -76,7 +76,7 @@ jobs:
       - lint
     if: ${{ inputs.plugin_name != '' && inputs.docs }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           token: ${{ secrets.RELEASE_TOKEN != null && secrets.RELEASE_TOKEN || secrets.GITHUB_TOKEN }}
       - name: Install Lua Language Server
@@ -132,7 +132,7 @@ jobs:
         with:
           token: ${{ secrets.RELEASE_TOKEN }}
           release-type: simple
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: rickstaa/action-create-tag@v1
         if: ${{ steps.release.outputs.release_created }}
         with:
