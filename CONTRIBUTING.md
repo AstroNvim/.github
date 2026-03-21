@@ -10,7 +10,7 @@ If you wish to contribute to an AstroNvim repository, you should:
 - For ssh:
 
   ```shell
-  $ git clone git@github.com:<YOUR GITHUB USERNAME>/<REPOSITORY_NAME>.git ~/projects/<REPSITORY_NAME>
+  $ git clone git@github.com:<YOUR GITHUB USERNAME>/<REPOSITORY_NAME>.git ~/projects/<REPOSITORY_NAME>
   ```
 
 - For https:
@@ -25,13 +25,13 @@ If you wish to contribute to an AstroNvim repository, you should:
    - for ssh:
 
      ```shell
-     $ git remote add upstream git@github.com:AstroNvim/<REPSOITORY_NAME>.git
+     $ git remote add upstream git@github.com:AstroNvim/<REPOSITORY_NAME>.git
      ```
 
    - for https:
 
      ```shell
-     $ git remote add upstream https://github.com/AstroNvim/<REPSOITORY_NAME>.git
+     $ git remote add upstream https://github.com/AstroNvim/<REPOSITORY_NAME>.git
      ```
 
 4. any time you create a branch to do some work, use
