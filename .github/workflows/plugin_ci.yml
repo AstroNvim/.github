@@ -64,10 +64,11 @@ jobs:
     if: ${{ inputs.plugin_name != '' }}
     steps:
       - uses: actions/checkout@v7
-      - uses: NTBBloodbath/selene-action@v1.0.0
+      - uses: YoloWingPixie/selene-lua-linter-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          args: --display-style=quiet lua
+          config-path: selene.toml
+          lint-path: lua
+          selene-args: --display-style quiet
   vimdoc:
     name: Generate Vimdoc
     runs-on: ubuntu-latest
